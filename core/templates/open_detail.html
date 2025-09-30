@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="product-detail">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.title }}" class="product-image-large">
+        {% else %}
+        <img src="{% static 'images/placeholder.jpg' %}" alt="Placeholder" class="product-image-large">
+        {% endif %}
+        <h1>{{ product.title }}</h1>
+        <p class="summary">{{ product.summary }}</p>
+        <div class="description">
+            <p>{{ product.description }}</p>
+        </div>
+        <p class="keywords"><strong>Palabras clave:</strong> {{ product.keywords }}</p>
+        <a href="{% url 'open' %}" class="btn-back">Volver a Productos</a>
+    </div>
+</div>
+{% endblock %}

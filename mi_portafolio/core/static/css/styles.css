@@ -1,0 +1,8 @@
+body{font-family: Arial, sans-serif;line-height:1.5;margin:0;padding:0}
+header{background:#222;color:#fff;padding:10px}
+.nav a{color:#fff;margin-right:10px;text-decoration:none}
+.hero{padding:20px}
+.skills{list-style:none;padding:0;display:flex;gap:8px}
+.project-card{border:1px solid #ddd;padding:10px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.card{border:1px solid #ddd;padding:10px}

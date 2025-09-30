@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contáctame{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Contáctame</h1>
+    <form id="contact-form" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Nombre:</label>
+            {{ form.name }}
+            <span class="error" id="name-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+            <span class="error" id="email-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.message.id_for_label }}">Mensaje:</label>
+            {{ form.message }}
+            <span class="error" id="message-error"></span>
+        </div>
+        <button type="submit" class="btn-submit">Enviar</button>
+    </form>
+</div>
+{% endblock %}

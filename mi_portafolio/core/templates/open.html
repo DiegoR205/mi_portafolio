@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Open — Mi colección</h2>
+<div class="grid">
+  {% for i in items %}
+  <article class="card">
+    <a href="{% url 'open_detail' i.pk %}" onclick="trackOpenClick('{{ i.titulo }}')">
+      {% if i.imagen %}<img src="{{ i.imagen.url }}" alt="{{ i.titulo }}">{% endif %}
+      <h3>{{ i.titulo }}</h3>
+      <p>{{ i.resumen }}</p>
+    </a>
+  </article>
+  {% empty %}
+    <p>No hay ítems aún. Agrégalos desde admin.</p>
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function trackOpenClick(title){
+  dataLayer.push({'event':'open_item_click','item_title':title});
+}
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Preguntas Frecuentes</h2>
+<div class="faqs">
+  {% for f in faqs %}
+  <div class="faq-item">
+    <button class="faq-toggle" aria-expanded="false" aria-controls="ans-{{ forloop.counter }}">{{ f.pregunta }}</button>
+    <div id="ans-{{ forloop.counter }}" class="faq-answer" hidden>{{ f.respuesta|linebreaksbr }}</div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.querySelectorAll('.faq-toggle').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const id = btn.getAttribute('aria-controls');
+    const panel = document.getElementById(id);
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    panel.hidden = expanded;
+  });
+});
+</script>
+{% endblock %}

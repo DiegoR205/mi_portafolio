@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Preguntas Frecuentes{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Preguntas Frecuentes</h1>
+    <div class="faq-list">
+        {% for faq in faqs %}
+        <div class="faq-item">
+            <button class="faq-question" data-toggle="faq-{{ faq.id }}">
+                {{ faq.question }}
+            </button>
+            <div class="faq-answer" id="faq-{{ faq.id }}">
+                <p>{{ faq.answer }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

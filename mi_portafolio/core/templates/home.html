@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  {% if profile and profile.foto %}<img src="{{ profile.foto.url }}" alt="Foto de {{ profile.nombre }}" class="profile-photo">{% endif %}
+  <h1>{{ profile.nombre }}</h1>
+  <p>{{ profile.resumen }}</p>
+  <ul class="skills">
+    {% if profile and profile.skills %}
+      {% for s in profile.skills.split(',') %}
+        <li>{{ s|trim }}</li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</section>
+
+<section class="banners">
+  <a href="https://example.com/compa1?utm_source=home&utm_medium=banner&utm_campaign=compa1" class="banner" onclick="trackBannerClick('compa1')">Banner compañero 1</a>
+  <a href="https://example.com/compa2?utm_source=home&utm_medium=banner&utm_campaign=compa2" class="banner" onclick="trackBannerClick('compa2')">Banner compañero 2</a>
+</section>
+
+<section class="portfolio">
+  {% for p in projects %}
+    <article class="project-card">
+      {% if p.imagen %}<img src="{{ p.imagen.url }}" alt="{{ p.titulo }}">{% endif %}
+      <h3>{{ p.titulo }}</h3>
+      <p>{{ p.descripcion|truncatechars:150 }}</p>
+      {% if p.url %}<a href="{{ p.url }}" target="_blank">Ver proyecto</a>{% endif %}
+    </article>
+  {% empty %}
+    <p>No hay proyectos aún. Agrega desde el panel de administración.</p>
+  {% endfor %}
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function trackBannerClick(name){
+  dataLayer.push({
+    'event':'banner_click',
+    'banner_name':name
+  });
+}
+</script>
+{% endblock %}

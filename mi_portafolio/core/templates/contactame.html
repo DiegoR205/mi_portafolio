@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Contáctame</h2>
+<form id="contactForm" method="post" novalidate>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" id="btnEnviar">Enviar</button>
+</form>
+<div id="formMessage" aria-live="polite"></div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const nombre = form.querySelector('[name=nombre]').value.trim();
+  const email = form.querySelector('[name=email]').value.trim();
+  const mensaje = form.querySelector('[name=mensaje]').value.trim();
+  const messageBox = document.getElementById('formMessage');
+
+  if(nombre.length < 2){ messageBox.textContent = 'Nombre muy corto'; return; }
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ messageBox.textContent = 'Email inválido'; return; }
+  if(mensaje.length < 10){ messageBox.textContent = 'Mensaje muy corto'; return; }
+
+  fetch(window.location.href,{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body: new URLSearchParams(new FormData(form))
+  }).then(resp => {
+    if(resp.redirected){
+      dataLayer.push({'event':'contact_sent'});
+      window.location = resp.url;
+    } else {
+      messageBox.textContent = 'Hubo un error al enviar';
+    }
+  }).catch(err=>{
+    messageBox.textContent = 'Error de red';
+  });
+});
+</script>
+{% endblock %}
