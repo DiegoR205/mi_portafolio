@@ -1,67 +1,119 @@
 # Mi Portafolio
 
-Sitio web de portafolio desarrollado con Django como CMS.
+## Descripción
+Este es un sitio web de portafolio personal desarrollado con Django. Permite mostrar información personal, proyectos, preguntas frecuentes (FAQ), elementos abiertos (como ideas o proyectos abiertos), y un formulario de contacto.
 
-## Requisitos
+## Características
+- **Página de Inicio**: Muestra el perfil personal y una lista de proyectos.
+- **Contacto**: Formulario para enviar mensajes de contacto.
+- **Preguntas Frecuentes (FAQ)**: Lista de preguntas y respuestas.
+- **Elementos Abiertos**: Lista de ideas o proyectos abiertos con detalles.
+- **Administración**: Panel de administración de Django para gestionar contenido.
+- **Responsive**: Diseño adaptable a diferentes dispositivos.
 
-- Python 3.8+
-- Django 4.2
+## Tecnologías Utilizadas
+- **Backend**: Django 4.2
+- **Base de Datos**: SQLite
+- **Frontend**: HTML, CSS, JavaScript
+- **Imágenes**: Pillow para manejo de imágenes
+- **Email**: Configurado con Gmail SMTP
 
 ## Instalación
+1. Clona el repositorio:
+   ```
+   git clone <url-del-repositorio>
+   cd mi_portafolio
+   ```
 
-1. Clona o descarga el proyecto.
-2. Crea un entorno virtual:
+2. Crea un entorno virtual (opcional pero recomendado):
    ```
    python -m venv venv
+   venv\Scripts\activate  # En Windows
    ```
-3. Activa el entorno virtual:
-   - Windows: `venv\Scripts\activate`
-   - Linux/Mac: `source venv/bin/activate`
-4. Instala las dependencias:
+
+3. Instala las dependencias:
    ```
    pip install -r requirements.txt
    ```
-5. Ejecuta las migraciones:
+
+4. Realiza las migraciones de la base de datos:
    ```
-   python manage.py makemigrations
    python manage.py migrate
    ```
-6. Crea un superusuario:
+
+5. Crea un superusuario para acceder al panel de administración:
    ```
    python manage.py createsuperuser
    ```
-7. Ejecuta el servidor:
+
+6. Ejecuta el servidor de desarrollo:
    ```
    python manage.py runserver
    ```
 
-## Configuración
+7. Abre tu navegador y ve a `http://127.0.0.1:8000/`
 
-### Google Tag Manager y Google Analytics
+## Uso
+- **Página de Inicio**: `http://127.0.0.1:8000/`
+- **Contacto**: `http://127.0.0.1:8000/contactame/`
+- **FAQ**: `http://127.0.0.1:8000/fyq/`
+- **Elementos Abiertos**: `http://127.0.0.1:8000/open/`
+- **Administración**: `http://127.0.0.1:8000/admin/`
 
-1. Reemplaza 'GTM-XXXXXXX' en `base.html` con tu ID de GTM real.
-2. Configura GA4 en GTM.
-3. Añade eventos personalizados para los banners.
-
-### Contenido
-
-- Accede al admin en `/admin/` para gestionar FAQs y productos.
-- Sube imágenes de productos en el admin.
-- Añade tu foto de perfil en `core/static/images/profile.jpg`.
-
-## Despliegue
-
-El proyecto está preparado para desplegar en plataformas como Vercel, Railway o Netlify.
-
-Para producción, configura:
-- `DEBUG = False`
-- Variables de entorno para SECRET_KEY
-- ALLOWED_HOSTS
-- Base de datos externa si es necesario
+Para agregar contenido, inicia sesión en el panel de administración y crea instancias de Profile, Project, FAQ, OpenItem.
 
 ## Estructura del Proyecto
+```
+mi_portafolio/
+├── core/
+│   ├── migrations/
+│   ├── static/
+│   │   ├── css/
+│   │   ├── images/
+│   │   └── js/
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── home.html
+│   │   ├── contactame.html
+│   │   ├── fyq.html
+│   │   ├── open.html
+│   │   ├── open_detail.html
+│   │   └── contact_success.html
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── urls.py
+│   └── views.py
+├── mi_portafolio/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── media/
+├── manage.py
+├── Procfile
+├── README.md
+├── requirements.txt
+└── .gitignore
+```
 
-- `core/`: App principal
-- `mi_portafolio/`: Configuración del proyecto
-- `templates/`: Plantillas HTML
-- `static/`: Archivos CSS y JS
+## Configuración de Email
+Para que el formulario de contacto envíe emails, configura las credenciales en `settings.py`:
+- EMAIL_HOST_USER: Tu email de Gmail
+- EMAIL_HOST_PASSWORD: Tu contraseña de aplicación de Gmail
+
+## Contribución
+Si deseas contribuir:
+1. Haz un fork del proyecto.
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-feature`).
+3. Commit tus cambios (`git commit -am 'Agrega nueva feature'`).
+4. Push a la rama (`git push origin feature/nueva-feature`).
+5. Abre un Pull Request.
+
+## Licencia
+Este proyecto está bajo la Licencia MIT. Ver el archivo LICENSE para más detalles.
+
+## Autor
+Diego Rojas Martínez - diegorojasmartinez20@gmail.com
