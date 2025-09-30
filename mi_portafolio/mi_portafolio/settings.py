@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-dev-key')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,cvdiego.up.railway.app,web-production-bed32.up.railway.app').split(',')
+ALLOWED_HOSTS = list(set([host.strip() for host in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',') if host.strip()] + ['cvdiego.up.railway.app', 'web-production-bed32.up.railway.app']))
 CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'https://cvdiego.up.railway.app,https://web-production-bed32.up.railway.app').split(',')
 
 INSTALLED_APPS = [
