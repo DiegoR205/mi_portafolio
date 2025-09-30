@@ -6,9 +6,18 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-dev-key')
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cvdiego.up.railway.app', 'web-production-bed32.up.railway.app']
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'https://cvdiego.up.railway.app,https://web-production-bed32.up.railway.app').split(',')
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+
+RAILWAY_HOST = os.environ.get('RAILWAY_PUBLIC_DOMAIN')
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
+if RAILWAY_HOST:
+    ALLOWED_HOSTS.append(RAILWAY_HOST)
+
+
+if DEBUG:
+    pass 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
