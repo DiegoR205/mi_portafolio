@@ -4,12 +4,12 @@
 {% block title %}Inicio - Mi Portafolio{% endblock %}
 
 {% block content %}
-<section id="cv">
+<section id="cv" class="animate-on-scroll fade-in">
     <div class="container">
-        <h1>Hoja de Vida</h1>
+        <h1 class="animate-on-scroll slide-up">Hoja de Vida</h1>
         <div class="cv-content">
-            <img src="{% static 'images/profile.png' %}" alt="Foto de perfil" class="profile-photo">
-            <div class="cv-text">
+            <img src="{% static 'images/profile.png' %}" alt="Foto de perfil" class="profile-photo animate-on-scroll scale-in">
+            <div class="cv-text animate-on-scroll slide-up">
                 <h2>Diego Steven Rojas Martinez</h2>
                 <p class="profile">Desarrollador Web</p>
                 <p>Estudiante de Ingeniería de Software con pasión por crear soluciones digitales innovadoras.</p>
@@ -18,28 +18,28 @@
     </div>
 </section>
 
-<section id="portfolio">
+<section id="portfolio" class="animate-on-scroll fade-in">
     <div class="container">
-        <h2>Portafolio de Proyectos</h2>
+        <h2 class="animate-on-scroll slide-up">Portafolio de Proyectos</h2>
         <div class="projects">
-            <div class="project">
-                <h3>Proyecto 1</h3>
-                <p>Descripción del proyecto 1.</p>
-            </div>
-            <div class="project">
-                <h3>Proyecto 2</h3>
-                <p>Descripción del proyecto 2.</p>
-            </div>
+            <article class="project animate-on-scroll slide-up">
+                <h3>Education Project</h3>
+                <p>Juego en 2D educativo desarrollado utilizando Pixeart para la creación de gráficos pixel art y Unity para la implementación de la mecánica de juego. El proyecto combina aprendizaje interactivo con elementos de diversión, actualmente en fase de desarrollo activo.</p>
+            </article>
+            <article class="project animate-on-scroll slide-up">
+                <h3>Sistema Transaccional de Ventas</h3>
+                <p>Sistema transaccional integral diseñado para la gestión eficiente de ventas en un local especializado en accesorios de carros. Incluye módulos de inventario, procesamiento de transacciones, gestión de clientes y generación de reportes detallados.</p>
+            </article>
         </div>
     </div>
 </section>
 
-<section id="skills">
+<section id="skills" class="animate-on-scroll fade-in">
     <div class="container">
-        <h2>Skills</h2>
-        <ul class="skills-list">
+        <h2 class="animate-on-scroll slide-up">Skills</h2>
+        <ul class="skills-list animate-on-scroll slide-up">
             <li>HTML5</li>
-            <li>CSS3</li>
+            <li>CSS</li>
             <li>JavaScript</li>
             <li>Django</li>
             <li>Python</li>
@@ -47,26 +47,70 @@
     </div>
 </section>
 
-<section id="contact-info">
+<section id="referencias-laborales" class="animate-on-scroll fade-in">
     <div class="container">
-        <h2>Datos de Contacto</h2>
-        <p>Email: diegorojasmartinez20@gmail.com</p>
-        <p>Teléfono: +57 3138401596</p>
-        <p>LinkedIn: linkedin.com/in/Diegorojasm</p>
+        <h2 class="animate-on-scroll slide-up">Referencias Laborales</h2>
+        <div class="referencias">
+            <article class="referencia animate-on-scroll slide-up">
+                <h3>Piranyela Londoño</h3>
+                <p class="position">Gerente de Proyectos, Tecnicauchos y Repuestos</p>
+                <p>"Diego demostró ser un desarrollador web altamente competente y dedicado. Su capacidad para resolver problemas complejos y trabajar en equipo fue invaluable para nuestros proyectos."</p>
+            </article>
+            <article class="referencia animate-on-scroll slide-up">
+                <h3>Rubiel Rojas</h3>
+                <p class="position">Director de TI, Moldepartes</p>
+                <p>"Trabajar con Diego fue una experiencia excelente. Su conocimiento en Django y Python nos ayudó a mejorar significativamente nuestros sistemas web."</p>
+            </article>
+        </div>
     </div>
 </section>
 
-<section id="banners">
+<section id="estudios" class="animate-on-scroll fade-in">
     <div class="container">
-        <h2>Banners</h2>
+        <h2 class="animate-on-scroll slide-up">Estudios</h2>
+        <div class="estudios-list">
+            <article class="estudio animate-on-scroll slide-up">
+                <h3>Ingeniería de Software</h3>
+                <p class="institucion">Universidad Manuela Beltran</p>
+                <p class="periodo">2022 - Actual</p>
+                <p>Estudiante de 8 semestre, enfocado en desarrollo de software, algoritmos y tecnologías web.</p>
+            </article>
+            <article class="estudio animate-on-scroll slide-up">
+                <h3>Curso de Python</h3>
+                <p class="institucion">Cisco</p>
+                <p class="periodo">2023</p>
+                <p>Certificación en desarrollo web con Python.</p>
+            </article>
+            <article class="estudio animate-on-scroll slide-up">
+                <h3>Curso de Infraestructura</h3>
+                <p class="institucion">Cisco</p>
+                <p class="periodo">2024</p>
+                <p>Certificacion en Infraestructura de redes.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="contact-info" class="animate-on-scroll fade-in">
+    <div class="container">
+        <h2 class="animate-on-scroll slide-up">Datos de Contacto</h2>
+        <p class="animate-on-scroll slide-up">Email: diegorojasmartinez20@gmail.com</p>
+        <p class="animate-on-scroll slide-up">Teléfono: +57 3138401596</p>
+        <p class="animate-on-scroll slide-up">LinkedIn: linkedin.com/in/Diegorojasm</p>
+    </div>
+</section>
+
+<section id="banners" class="animate-on-scroll fade-in">
+    <div class="container">
+        <h2 class="animate-on-scroll slide-up">Banners</h2>
         <div class="banner-grid">
-            <a href="https://cv-nicolas-torres.up.railway.app?utm_source=friend&utm_medium=referral&utm_campaign=friend_referral&utm_id=Friend+Referral" target="_blank" class="banner-link" data-event="banner_click" data-banner="banner1">
+            <a href="https://cv-nicolas-torres.up.railway.app?utm_source=friend&utm_medium=referral&utm_campaign=friend_referral&utm_id=Friend+Referral" target="_blank" class="banner-link animate-on-scroll slide-up" data-event="banner_click" data-banner="banner1">
                 <div class="banner">
                     <h3>Nicolas Torres</h3>
                     <p>Visita el portafolio de mi compañero</p>
                 </div>
             </a>
-            <a href="https://linabrinez.up.railway.app?utm_source=friend&utm_medium=referral&utm_campaign=friend_referral&utm_term=Friend+Referral" target="_blank" class="banner-link" data-event="banner_click" data-banner="banner2">
+            <a href="https://linabrinez.up.railway.app?utm_source=friend&utm_medium=referral&utm_campaign=friend_referral&utm_term=Friend+Referral" target="_blank" class="banner-link animate-on-scroll slide-up" data-event="banner_click" data-banner="banner2">
                 <div class="banner">
                     <h3>Lina Briñez</h3>
                     <p>Visita el portafolio de mi compañero</p>
