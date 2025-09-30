@@ -140,11 +140,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'core' / 'static']
+
+# In production, collectstatic will gather static files here
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Directory for static files during development
+if DEBUG:
+    STATICFILES_DIRS = [BASE_DIR / 'core' / 'static']
+else:
+    # Use WhiteNoise storage backend for production static files
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Note:
+# - Ensure to run `python manage.py collectstatic` during deployment to Railway.
+# - WhiteNoise middleware is configured to serve static files in production.
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
