@@ -1,26 +1,32 @@
 # Pasos para solucionar errores 404 y 500 en el proyecto Django
 
-1. Configuración para servir archivos estáticos en modo DEBUG:
-   - Ya se agregó en `mi_portafolio/mi_portafolio/urls.py` la configuración para servir archivos estáticos cuando `DEBUG=True`.
-   - Esto soluciona los errores 404 de archivos estáticos (css, js, imágenes).
+1. Mover Procfile al directorio raíz:
+   - El Procfile estaba en `mi_portafolio/Procfile`, pero Railway espera que esté en el directorio raíz del proyecto.
+   - Ya se movió el Procfile al directorio raíz.
 
 2. Aplicar migraciones y cargar datos:
-   - Ejecutar en consola:
+   - El Procfile tiene el comando `release` que ejecuta:
      ```
-     python manage.py migrate
+     python manage.py migrate && python manage.py collectstatic --noinput && python manage.py loaddata core/fixtures/initial_data.json
      ```
-   - Cargar datos iniciales para los modelos FAQ y Product (puede ser mediante fixtures o admin).
+   - Esto debería aplicarse automáticamente en el despliegue de Railway.
+   - Si no se aplicó, ejecutar manualmente en la consola de Railway o redeploy.
 
 3. Verificar que la base de datos tenga datos para FAQ y Product:
-   - Si no hay datos, las vistas `fyq` y `open_view` pueden fallar o mostrar vacío.
-   - Agregar datos para evitar errores 500.
+   - Los fixtures en `core/fixtures/initial_data.json` contienen datos iniciales para FAQ y Product.
+   - Si no se cargaron, las vistas `fyq` y `open_view` pueden fallar o mostrar vacío.
 
-4. Revisar logs para errores 500:
-   - Si persisten errores 500 en `/fyq/` o `/open/`, revisar los logs para detalles.
-   - Puede ser un problema en la base de datos o en las plantillas.
+4. Archivos estáticos:
+   - En producción (DEBUG=False), los archivos estáticos se sirven desde `STATIC_ROOT` usando WhiteNoise.
+   - El comando `collectstatic` en el Procfile debería copiar los archivos a `staticfiles/`.
+   - Si no se ejecutó, los archivos estáticos darán 404.
 
-5. Verificar imágenes:
-   - En `open.html` se usa `product.image.url` para mostrar imágenes.
-   - Asegurarse que las imágenes existan o se use un placeholder.
+5. Imágenes de productos:
+   - Se modificó `open.html` para no mostrar una imagen placeholder si no hay imagen.
+   - Ahora solo muestra la imagen si existe.
+
+6. Redeploy en Railway:
+   - Después de los cambios, hacer un commit y push para redeploy.
+   - Verificar que el Procfile se ejecute correctamente en la fase de release.
 
 Con estos pasos, los errores 404 y 500 deberían solucionarse.

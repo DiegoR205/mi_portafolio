@@ -11,8 +11,6 @@
         <div class="product-card">
             {% if product.image %}
             <img src="{{ product.image.url }}" alt="{{ product.title }}" class="product-image">
-            {% else %}
-            <img src="{% static 'images/placeholder.jpg' %}" alt="Placeholder" class="product-image">
             {% endif %}
             <h3>{{ product.title }}</h3>
             <p>{{ product.summary }}</p>
