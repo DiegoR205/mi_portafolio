@@ -1,28 +1,26 @@
-# TODO: Deploy Django Project to Railway
+# Pasos para solucionar errores 404 y 500 en el proyecto Django
 
-## Completed
-- [x] Update requirements.txt with production dependencies (psycopg2-binary, gunicorn, whitenoise, dj-database-url)
-- [x] Update settings.py for production:
-  - [x] Import dj_database_url
-  - [x] Set SECRET_KEY from env
-  - [x] Set DEBUG from env (default False)
-  - [x] Set ALLOWED_HOSTS to ['*']
-  - [x] Configure DATABASES with dj_database_url
-  - [x] Add whitenoise middleware
-  - [x] Add STATIC_ROOT
-  - [x] Update EMAIL_HOST_USER and EMAIL_HOST_PASSWORD to env only
-- [x] Commit changes to git
-- [x] Push to GitHub repository
+1. Configuración para servir archivos estáticos en modo DEBUG:
+   - Ya se agregó en `mi_portafolio/mi_portafolio/urls.py` la configuración para servir archivos estáticos cuando `DEBUG=True`.
+   - Esto soluciona los errores 404 de archivos estáticos (css, js, imágenes).
 
-## Pending
-- [ ] Create Railway project and connect to GitHub repo
-- [ ] Set environment variables in Railway:
-  - SECRET_KEY: Generate a new secret key
-  - DEBUG: False
-  - DATABASE_URL: Provided by Railway PostgreSQL
-  - EMAIL_HOST_USER: Your Gmail
-  - EMAIL_HOST_PASSWORD: Your Gmail app password
-- [ ] Run migrations on Railway (if needed, Railway may auto-run)
-- [ ] Test the deployed site: home, contact, FAQ, products
-- [ ] Verify static files and styles are loading
-- [ ] Verify email functionality
+2. Aplicar migraciones y cargar datos:
+   - Ejecutar en consola:
+     ```
+     python manage.py migrate
+     ```
+   - Cargar datos iniciales para los modelos FAQ y Product (puede ser mediante fixtures o admin).
+
+3. Verificar que la base de datos tenga datos para FAQ y Product:
+   - Si no hay datos, las vistas `fyq` y `open_view` pueden fallar o mostrar vacío.
+   - Agregar datos para evitar errores 500.
+
+4. Revisar logs para errores 500:
+   - Si persisten errores 500 en `/fyq/` o `/open/`, revisar los logs para detalles.
+   - Puede ser un problema en la base de datos o en las plantillas.
+
+5. Verificar imágenes:
+   - En `open.html` se usa `product.image.url` para mostrar imágenes.
+   - Asegurarse que las imágenes existan o se use un placeholder.
+
+Con estos pasos, los errores 404 y 500 deberían solucionarse.
