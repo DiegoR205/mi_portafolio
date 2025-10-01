@@ -11,10 +11,10 @@
   - [x] Add whitenoise middleware
   - [x] Add STATIC_ROOT
   - [x] Update EMAIL_HOST_USER and EMAIL_HOST_PASSWORD to env only
+- [x] Commit changes to git
+- [x] Push to GitHub repository
 
 ## Pending
-- [ ] Commit changes to git
-- [ ] Push to GitHub repository
 - [ ] Create Railway project and connect to GitHub repo
 - [ ] Set environment variables in Railway:
   - SECRET_KEY: Generate a new secret key

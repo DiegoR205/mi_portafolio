@@ -1,0 +1,65 @@
+[
+  {
+    "model": "core.faq",
+    "pk": 1,
+    "fields": {
+      "question": "¿Qué servicios ofreces?",
+      "answer": "Ofrezco desarrollo de aplicaciones web, móviles y de escritorio, consultoría en tecnología y soporte técnico.",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.faq",
+    "pk": 2,
+    "fields": {
+      "question": "¿Cómo puedo contactarte?",
+      "answer": "Puedes contactarme a través del formulario de contacto en esta página o enviando un email a diegorojasmartinez20@gmail.com.",
+      "order": 2
+    }
+  },
+  {
+    "model": "core.faq",
+    "pk": 3,
+    "fields": {
+      "question": "¿Cuál es tu experiencia?",
+      "answer": "Tengo más de 5 años de experiencia en desarrollo de software, trabajando con tecnologías como Python, Django, React, y más.",
+      "order": 3
+    }
+  },
+  {
+    "model": "core.product",
+    "pk": 1,
+    "fields": {
+      "title": "Aplicación Web de E-commerce",
+      "summary": "Plataforma completa para ventas en línea con carrito de compras, pagos integrados y panel de administración.",
+      "description": "Desarrollo de una aplicación web completa para e-commerce, incluyendo frontend responsive, backend seguro, integración con pasarelas de pago como Stripe o PayPal, y un panel de administración intuitivo para gestionar productos, pedidos y clientes.",
+      "keywords": "ecommerce, web, django, react, pagos",
+      "image": "",
+      "created_at": "2023-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "core.product",
+    "pk": 2,
+    "fields": {
+      "title": "Sistema de Gestión Empresarial",
+      "summary": "Software personalizado para la gestión de inventarios, ventas y finanzas de tu empresa.",
+      "description": "Sistema integral que incluye módulos para control de inventario, gestión de ventas, facturación, reportes financieros y más. Adaptado a las necesidades específicas de tu negocio.",
+      "keywords": "erp, gestion, inventario, ventas, finanzas",
+      "image": "",
+      "created_at": "2023-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "core.product",
+    "pk": 3,
+    "fields": {
+      "title": "Aplicación Móvil",
+      "summary": "Desarrollo de apps móviles nativas o híbridas para iOS y Android.",
+      "description": "Creación de aplicaciones móviles desde cero, con diseño moderno, integración con APIs, y optimización para rendimiento. Compatible con iOS y Android.",
+      "keywords": "movil, ios, android, react native, flutter",
+      "image": "",
+      "created_at": "2023-01-01T00:00:00Z"
+    }
+  }
+]
